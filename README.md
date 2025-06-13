@@ -65,7 +65,7 @@ Projet de détection d'intrusions réseau basé sur l'apprentissage automatique,
 
 ---
 
-## 📈 **Chapitre 5 – Évaluation des Modèles**
+## **Chapitre 5 – Évaluation des Modèles**
 
 * **5.1 Métriques d’évaluation**
 
