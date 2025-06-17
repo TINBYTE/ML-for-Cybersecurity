@@ -1,0 +1,132 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[utf8]{inputenc}
+
+% Configuration des marges
+\geometry{
+    top=2.5cm,
+    bottom=2.5cm,
+    left=3cm,
+    right=2.5cm
+}
+
+% Couleurs personnalisées
+\definecolor{blueuniv}{RGB}{0,51,102}
+\definecolor{graytext}{RGB}{64,64,64}
+
+\begin{document}
+
+% Page de titre
+\begin{titlepage}
+    \centering
+    
+    % Espace pour les logos en haut
+    \vspace{1cm}
+    \begin{minipage}[t]{0.5\textwidth}
+        \centering
+        % Logo Université 
+        \includegraphics[width=5cm]{Assets/logoFPO.png}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.5\textwidth}
+        \centering
+        % Logo Faculté 
+        \includegraphics[width=5cm]{Assets/LogoUIZ.jpg}
+    \end{minipage}
+    
+    \vspace{1cm}
+    
+    % En-tête institutionnel
+    {\large \textbf{\color{blueuniv}UNIVERSITÉ IBN ZOHR}}\\
+    \vspace{0.2cm}
+    {\large \textbf{FACULTÉ POLYDISCIPLINAIRE DE OUARZAZATE}}\\
+    \vspace{0.1cm}
+    {\normalsize Département de Mathématiques et Informatique}\\
+    \vspace{0.1cm}
+    {\small Spécialité : Mathématiques Appliquées pour la Science des Données}\\
+    
+    \vspace{1cm}
+    
+    % Type de document
+    {\Large \textbf{\color{blueuniv}MÉMOIRE DE MASTER}}\\
+    
+    \vspace{1cm}
+    
+    % Titre principal avec espacement corrigé
+    \begin{center}
+        \rule{\textwidth}{1pt}
+        \vspace{1.2cm}
+        {\LARGE \textbf{\color{blueuniv}Détection d'Intrusion Réseau par Apprentissage Automatique}}\\
+        \vspace{0.4cm}
+        {\Large \textbf{Une Approche Hiérarchique Basée sur les Données}}\\
+        \vspace{0.3cm}
+        {\large \textit{Network Intrusion Detection using Machine Learning: A Hierarchical Data-driven Approach}}\\
+        \vspace{1.2cm}
+        \rule{\textwidth}{1pt}
+    \end{center}
+    
+    \vspace{1cm}
+    
+    % Étudiant et encadrement
+    \begin{minipage}[t]{0.5\textwidth}
+        \textbf{\color{blueuniv}Présenté par :}\\
+        \vspace{0.1cm}
+        {\large \textbf{Abdelfattah BOUHLALI}}\\
+        \vspace{0.2cm}
+        Étudiant en Master \\
+        Mathématiques Appliquées pour\\
+        la Science des Données\\
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.5\textwidth}
+        \textbf{\color{blueuniv}Encadré par :}\\
+        \vspace{0.3cm}
+        {\large \textbf{Prof. Abdelkrim EL MOUATASIM}}\\
+        \vspace{0.2cm}
+        Professeur\\
+        Département de Mathématiques\\
+        et Informatique\\
+        \vspace{0.5cm}
+    \end{minipage}
+    
+     \vspace{0.5cm}
+    
+    % Date et information 
+    \begin{center}
+        {\normalsize 
+        \textbf{Soutenu le : 15 Juin 2025}\\
+        \vspace{0.2cm}
+        Année universitaire : 2024-2025\\
+        \vspace{0.2cm}
+        \textcopyright{} 2025 - Université Ibn Zohr, Ouarzazate, Maroc
+        }
+    \end{center}
+    
+    \vspace{1cm}   
+    
+\end{titlepage}
+
+\newpage
+\input{Article/Abstract/Abstract}
+\input{Article/REMERCIEMENT/Remerciement}
+\input{Article/INTRODUCTION/introduction}
+\input{Article/METHODOLOGIE/methode}
+\input{Article/RESULTATS/resultats}
+\input{Article/DISCUSSION/discussion}
+
+
+\end{document}
