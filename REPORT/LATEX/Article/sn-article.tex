@@ -1,4 +1,5 @@
 \documentclass[12pt,a4paper]{article}
+\usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[french]{babel}
 \usepackage{geometry}
@@ -14,7 +15,8 @@
 \usepackage{float}
 \usepackage{caption}
 \usepackage{subcaption}
-\usepackage[utf8]{inputenc}
+\usepackage{multirow}
+\usepackage{tikz}
 
 % Configuration des marges
 \geometry{
@@ -26,107 +28,146 @@
 
 % Couleurs personnalisées
 \definecolor{blueuniv}{RGB}{0,51,102}
+\definecolor{lightblue}{RGB}{173,216,230}
 \definecolor{graytext}{RGB}{64,64,64}
+\definecolor{lightgraybox}{RGB}{220,220,220} % Remplace l'or
 
 \begin{document}
 
-% Page de titre
+% Page de titre avec style moderne
 \begin{titlepage}
+    \newgeometry{margin=0.5cm}
     \centering
-    
-    % Espace pour les logos en haut
+
+    % Fond décoratif subtil
+    \begin{tikzpicture}[remember picture,overlay]
+        \fill[lightblue!10] (current page.north west) rectangle (current page.south east);
+        \draw[blueuniv, line width=3pt] ([xshift=1cm,yshift=-1cm]current page.north west) -- ([xshift=-1cm,yshift=-1cm]current page.north east);
+        \draw[blueuniv!30, line width=1pt] ([xshift=1cm,yshift=-1.2cm]current page.north west) -- ([xshift=-1cm,yshift=-1.2cm]current page.north east);
+    \end{tikzpicture}
+
+    % Logos en haut
     \vspace{1cm}
-    \begin{minipage}[t]{0.5\textwidth}
+    \begin{minipage}[t]{0.45\textwidth}
         \centering
-        % Logo Université 
-        \includegraphics[width=5cm]{Assets/logoFPO.png}
+        \includegraphics[width=4.5cm]{Assets/logoFPO.png}
     \end{minipage}%
     \hfill
-    \begin{minipage}[t]{0.5\textwidth}
+    \begin{minipage}[t]{0.45\textwidth}
         \centering
-        % Logo Faculté 
-        \includegraphics[width=5cm]{Assets/LogoUIZ.jpg}
+        \includegraphics[width=4.5cm]{Assets/LOGO-UIZ.png}
     \end{minipage}
-    
-    \vspace{1cm}
-    
+
+    \vspace{1.5cm}
+
     % En-tête institutionnel
-    {\large \textbf{\color{blueuniv}UNIVERSITÉ IBN ZOHR}}\\
-    \vspace{0.2cm}
-    {\large \textbf{FACULTÉ POLYDISCIPLINAIRE DE OUARZAZATE}}\\
-    \vspace{0.1cm}
-    {\normalsize Département de Mathématiques et Informatique}\\
-    \vspace{0.1cm}
-    {\small Spécialité : Mathématiques Appliquées pour la Science des Données}\\
-    
-    \vspace{1cm}
-    
+    \begin{center}
+        \colorbox{blueuniv}{\color{white}\large\textbf{\quad UNIVERSITÉ IBN ZOHR \quad}}\\
+        \vspace{0.3cm}
+        {\large \textbf{\color{blueuniv}FACULTÉ POLYDISCIPLINAIRE DE OUARZAZATE}}\\
+        \vspace{0.2cm}
+        {\normalsize \color{graytext} Département de Mathématiques et Informatique}\\
+        {\small \color{graytext} Spécialité : Mathématiques Appliquées pour la Science des Données}
+    \end{center}
+
+    \vspace{1.5cm}
+
     % Type de document
-    {\Large \textbf{\color{blueuniv}MÉMOIRE DE MASTER}}\\
-    
-    \vspace{1cm}
-    
-    % Titre principal avec espacement corrigé
     \begin{center}
-        \rule{\textwidth}{1pt}
-        \vspace{1.2cm}
-        {\LARGE \textbf{\color{blueuniv}Détection d'Intrusion Réseau par Apprentissage Automatique}}\\
-        \vspace{0.4cm}
-        {\Large \textbf{Une Approche Hiérarchique Basée sur les Données}}\\
-        \vspace{0.3cm}
-        {\large \textit{Network Intrusion Detection using Machine Learning: A Hierarchical Data-driven Approach}}\\
-        \vspace{1.2cm}
-        \rule{\textwidth}{1pt}
+        \colorbox{lightgraybox}{\color{blueuniv}\Large\textbf{\quad MÉMOIRE DE MASTER \quad}}
     \end{center}
-    
-    \vspace{1cm}
-    
-    % Étudiant et encadrement
-    \begin{minipage}[t]{0.5\textwidth}
-        \textbf{\color{blueuniv}Présenté par :}\\
-        \vspace{0.1cm}
-        {\large \textbf{Abdelfattah BOUHLALI}}\\
-        \vspace{0.2cm}
-        Étudiant en Master \\
-        Mathématiques Appliquées pour\\
-        la Science des Données\\
-    \end{minipage}%
-    \hfill
-    \begin{minipage}[t]{0.5\textwidth}
-        \textbf{\color{blueuniv}Encadré par :}\\
-        \vspace{0.3cm}
-        {\large \textbf{Prof. Abdelkrim EL MOUATASIM}}\\
-        \vspace{0.2cm}
-        Professeur\\
-        Département de Mathématiques\\
-        et Informatique\\
-        \vspace{0.5cm}
-    \end{minipage}
-    
-     \vspace{0.5cm}
-    
-    % Date et information 
+
+    \vspace{1.5cm}
+
+    % Titre du mémoire
     \begin{center}
-        {\normalsize 
-        \textbf{Soutenu le : 15 Juin 2025}\\
-        \vspace{0.2cm}
-        Année universitaire : 2024-2025\\
-        \vspace{0.2cm}
-        \textcopyright{} 2025 - Université Ibn Zohr, Ouarzazate, Maroc
-        }
+        \begin{tikzpicture}
+            \node[rectangle, draw=blueuniv, line width=2pt, rounded corners=10pt, 
+                  inner sep=15pt, text width=0.85\textwidth, text centered] {
+                {\LARGE \textbf{\color{blueuniv}Détection d'Intrusion Réseau par Apprentissage Automatique}}\\
+                \vspace{0.4cm}
+                {\Large \textbf{\color{graytext}Une Approche Hiérarchique Basée sur les Données}}\\
+                \vspace{0.3cm}
+                {\large \textit{\color{graytext}Network Intrusion Detection using Machine Learning: A Hierarchical Data-driven Approach}}
+            };
+        \end{tikzpicture}
     \end{center}
-    
-    \vspace{1cm}   
-    
+
+    \vspace{1.5cm}
+
+    % Étudiant et encadrant
+    \begin{center}
+        \begin{minipage}[t]{0.4\textwidth}
+            \centering
+            \colorbox{lightblue!30}{
+                \begin{minipage}{0.9\textwidth}
+                    \centering
+                    \vspace{0.3cm}
+                    \textbf{\color{blueuniv}Présenté par}\\
+                    \vspace{0.2cm}
+                    {\large \textbf{Abdelfattah BOUHLALI}}\\
+                    \vspace{0.1cm}
+                    \small Étudiant en Master\\
+                    Mathématiques Appliquées pour\\
+                    la Science des Données\\
+                    \vspace{0.3cm}
+                \end{minipage}
+            }
+        \end{minipage}%
+        \hfill
+        \begin{minipage}[t]{0.4\textwidth}
+            \centering
+            \colorbox{blueuniv!10}{
+                \begin{minipage}{0.9\textwidth}
+                    \centering
+                    \vspace{0.3cm}
+                    \textbf{\color{blueuniv}Encadré par}\\
+                    \vspace{0.2cm}
+                    {\large \textbf{Prof. Abdelkrim EL MOUATASIM}}\\
+                    \vspace{0.1cm}
+                    \small Professeur\\
+                    Département de Mathématiques\\
+                    et Informatique\\
+                    \vspace{0.3cm}
+                \end{minipage}
+            }
+        \end{minipage}
+    \end{center}
+
+    \vspace{1.5cm}
+
+    % Date et informations
+    \begin{center}
+        \begin{tikzpicture}
+            \node[rectangle, draw=graytext, line width=1pt, rounded corners=5pt, 
+                  inner sep=10pt, fill=white] {
+                \begin{minipage}{0.6\textwidth}
+                    \centering
+                    {\normalsize \textbf{Soutenu le : 15 Juin 2025}}\\
+                    \vspace{0.2cm}
+                    Année universitaire : 2024-2025\\
+                    \vspace{0.2cm}
+                    \textcopyright{} 2025 - Université Ibn Zohr, Ouarzazate, Maroc
+                \end{minipage}
+            };
+        \end{tikzpicture}
+    \end{center}
+
+    \restoregeometry
 \end{titlepage}
 
 \newpage
 \input{Article/Abstract/Abstract}
 \input{Article/REMERCIEMENT/Remerciement}
+% TABLE DES MATIÈRES
+\tableofcontents
+\newpage
+\input{Article/Table de Figures/tablefigures}
 \input{Article/INTRODUCTION/introduction}
 \input{Article/METHODOLOGIE/methode}
 \input{Article/RESULTATS/resultats}
 \input{Article/DISCUSSION/discussion}
-
+\input{Article/CONCLUSION/Conclusion}
+\input{Article/REFERENCES/references}
 
 \end{document}

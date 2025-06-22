@@ -10,7 +10,7 @@ Notre système de détection d'intrusions adopte une approche hiérarchique en d
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{figures/pipeline_general.png}
+    \includegraphics[width=0.9\textwidth]{Assets/ARCHITECTEUR ML.png}
     \caption{Architecture générale du système de détection d'intrusions hiérarchique}
     \label{fig:pipeline_general}
 \end{figure}
@@ -110,17 +110,17 @@ NSL-KDD organise les intrusions selon quatre catégories principales, chacune re
 \begin{table}[H]
     \centering
     \caption{Distribution des catégories d'attaques dans NSL-KDD}
-    \begin{tabular}{|l|p{8cm}|c|}
+    \begin{tabular}{|l|p{6.5cm}|c|}
         \hline
         \textbf{Catégorie} & \textbf{Description} & \textbf{Exemples} \\
         \hline
-        DoS & Attaques par déni de service visant à saturer les ressources système & neptune, smurf, pod \\
+        DoS & Attaques par déni de service visant à saturer les ressources & neptune, smurf, pod \\
         \hline
         Probe & Tentatives de reconnaissance pour découvrir les vulnérabilités & satan, portsweep, nmap \\
         \hline
         R2L & Intrusions distantes cherchant un accès local non autorisé & warezclient, imap, spy \\
         \hline
-        U2R & Élévations de privilèges d'utilisateur normal vers administrateur & buffer\_overflow, rootkit \\
+        U2R & Élévations de privilèges d'utilisateur vers administrateur & buffer\_overflow, rootkit \\
         \hline
     \end{tabular}
     \label{tab:attack_categories}
@@ -128,7 +128,7 @@ NSL-KDD organise les intrusions selon quatre catégories principales, chacune re
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{figures/data_distribution.png}
+    \includegraphics[width=0.8\textwidth]{Assets/Top 10 des types de protocoles.png}
     \caption{Distribution des classes dans le jeu de données NSL-KDD}
     \label{fig:data_distribution}
 \end{figure}
@@ -172,7 +172,8 @@ Pour construire l'arbre, nous utilisons le critère d'entropie. L'entropie d'un 
 
 où $c$ est le nombre de classes et $p_i$ la proportion d'exemples de classe $i$ dans $S$.
 
-Le gain d'information pour un attribut $A$ divisant $S$ en sous-ensembles $\{S_1, S_2, ..., S_v\}$ est :
+Le gain d'information pour un attribut $A$ divisant $S$ en sous-ensembles \\
+$\{S_1, S_2, ..., S_v\}$ est :
 
 \begin{equation}
     \text{Gain}(S,A) = H(S) - \sum_{j=1}^{v} \frac{|S_j|}{|S|} H(S_j)
@@ -343,7 +344,7 @@ L'autoencodeur constitue l'élément central de notre approche non-supervisée p
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{figures/autoencoder_architecture.png}
+    \includegraphics[width=0.3\textwidth]{Assets/autoencoder architecture.png}
     \caption{Architecture de l'autoencodeur pour la détection d'anomalies}
     \label{fig:autoencoder}
 \end{figure}
@@ -438,7 +439,7 @@ SVM-SMOTE améliore SMOTE en utilisant un SVM pour identifier les échantillons 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{figures/smote_illustration.png}
+    \includegraphics[width=0.4 \textwidth]{Assets/Illustration du processus SVM-SMOTE.png}
     \caption{Illustration du processus SVM-SMOTE}
     \label{fig:smote}
 \end{figure}
