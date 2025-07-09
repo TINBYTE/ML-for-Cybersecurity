@@ -1,10 +1,10 @@
-% Section Conclusion
+% Chapitre Conclusion
 \newpage
-\section{CONCLUSION}
+\chapter{CONCLUSION}
 
 Ce mémoire a présenté une approche innovante pour la détection d'intrusions réseau basée sur l'apprentissage automatique, appliquée au jeu de données NSL-KDD. À travers une méthodologie rigoureuse combinant classification hiérarchique, apprentissage supervisé et non-supervisé, ainsi que des techniques avancées de gestion du déséquilibre des classes, nous avons développé un système de détection performant et adapté aux défis contemporains de la cybersécurité.
 
-\subsection{Rappel du contexte et des objectifs}
+\section{Rappel du contexte et des objectifs}
 
 L'augmentation exponentielle des cyberattaques et la sophistication croissante des techniques d'intrusion constituent des défis majeurs pour la sécurité des infrastructures numériques contemporaines. Face à cette menace persistante, les systèmes de détection d'intrusions traditionnels, principalement basés sur des signatures, montrent leurs limites pour identifier les nouvelles formes d'attaques et s'adapter à l'évolution rapide du paysage des menaces.
 
@@ -18,35 +18,35 @@ Notre recherche s'est fixée comme objectif principal de développer un système
     \item Valider la viabilité opérationnelle du système proposé sur des données réalistes
 \end{itemize}
 
-\subsection{Synthèse des contributions principales}
+\section{Synthèse des contributions principales}
 
 Notre travail apporte plusieurs contributions significatives au domaine de la détection d'intrusions par apprentissage automatique.
 
-\subsubsection{Architecture hiérarchique validée}
+\subsection{Architecture hiérarchique validée}
 
 L'approche hiérarchique en deux étapes constitue notre contribution méthodologique principale. Cette architecture démontre empiriquement les bénéfices de la spécialisation progressive : la première étape optimise la sensibilité globale aux intrusions, tandis que la seconde affine la caractérisation des menaces détectées. Cette décomposition facilite également la maintenance opérationnelle et l'évolution du système, chaque étape pouvant être optimisée indépendamment.
 
-\subsubsection{Efficacité démontrée de l'autoencodeur}
+\subsection{Efficacité démontrée de l'autoencodeur}
 
 L'intégration d'un autoencodeur pour la détection d'anomalies représente une innovation notable de notre approche. Avec un F1-score de 0,745 et une accuracy de 0,756, cet algorithme non-supervisé démontre des performances remarquables considérant son entraînement exclusivement sur des données normales. Cette capacité de détection sans connaissance préalable des patterns d'attaque offre une couverture prophylactique précieuse contre les menaces zero-day.
 
-\subsubsection{Validation comparative exhaustive}
+\subsection{Validation comparative exhaustive}
 
 L'évaluation systématique de sept algorithmes d'apprentissage automatique fournit un référentiel empirique robuste pour la communauté scientifique. La supériorité du perceptron multi-couches (F1-score = 0,816, accuracy = 0,819) valide l'intérêt des approches neuronales pour capturer les relations non-linéaires complexes présentes dans les données de trafic réseau.
 
-\subsubsection{Impact quantifié de SVM-SMOTE}
+\subsection{Impact quantifié de SVM-SMOTE}
 
 Notre étude démontre l'efficacité de la technique SVM-SMOTE pour améliorer la détection des classes minoritaires critiques. L'amélioration de 15,6\% du F1-score macro confirme l'intérêt des techniques d'équilibrage sophistiquées, tout en révélant leurs limitations pour les classes ultra-minoritaires comme U2R.
 
-\subsection{Principaux résultats obtenus}
+\section{Principaux résultats obtenus}
 
 Les expérimentations menées sur le dataset NSL-KDD révèlent des performances différenciées selon les types d'attaques, offrant une cartographie précise des capacités et limitations de notre approche.
 
-\subsubsection{Excellence en classification binaire}
+\subsection{Excellence en classification binaire}
 
 La classification binaire atteint des performances remarquables avec une accuracy de 81,9\% et un F1-score de 0,816 pour le modèle MLP. Ces résultats positionnent notre système comme viable pour un déploiement opérationnel, particulièrement pour la détection préliminaire d'activités suspectes nécessitant une investigation approfondie.
 
-\subsubsection{Performances contrastées en classification multi-classes}
+\subsection{Performances contrastées en classification multi-classes}
 
 La classification multi-classes révèle une hiérarchie claire de détectabilité :
 
@@ -58,37 +58,37 @@ La classification multi-classes révèle une hiérarchie claire de détectabilit
     \item \textbf{Attaques U2R} : 29,9\% de taux de réussite - Performance critique révélant les limitations de l'approche réseau pure
 \end{itemize}
 
-\subsubsection{Validation de l'approche d'équilibrage}
+\subsection{Validation de l'approche d'équilibrage}
 
 L'application de SVM-SMOTE transforme la distribution des classes d'entraînement, passant de 125,973 à 336,715 échantillons. Cette intervention améliore significativement le F1-score macro (+15,6\%) tout en maintenant une accuracy globale acceptable (78,9\%), démontrant l'efficacité de cette technique pour les données de cybersécurité déséquilibrées.
 
-\subsection{Limitations reconnues et défis persistants}
+\section{Limitations reconnues et défis persistants}
 
 Notre recherche, malgré ses contributions significatives, présente plusieurs limitations qu'il convient de reconnaître pour orienter les développements futurs.
 
-\subsubsection{Contraintes liées au dataset}
+\subsection{Contraintes liées au dataset}
 
 L'utilisation exclusive du dataset NSL-KDD, bien que standard dans la communauté, limite la généralisation temporelle de nos conclusions. Ce dataset, datant de plus d'une décennie, ne reflète pas nécessairement les techniques d'attaque contemporaines. L'absence de validation croisée sur des datasets plus récents (CICIDS-2017, UNSW-NB15) constitue une limitation méthodologique à adresser dans les travaux futurs.
 
-\subsubsection{Défis structurels des attaques sophistiquées}
+\subsection{Défis structurels des attaques sophistiquées}
 
 Les performances critiques pour les attaques R2L et U2R révèlent un défi structurel transcendant notre approche spécifique. Ces intrusions, conçues pour mimer le comportement normal, exploitent des vulnérabilités logiques plutôt que des anomalies de trafic, nécessitant des techniques de détection fondamentalement différentes intégrant l'analyse comportementale et l'inspection de contenu applicatif.
 
-\subsubsection{Limitations de l'augmentation synthétique}
+\subsection{Limitations de l'augmentation synthétique}
 
 Bien que SVM-SMOTE améliore les performances globales, la génération d'échantillons synthétiques ne peut compenser entièrement l'absence de diversité dans les exemples réels d'attaques ultra-minoritaires. Cette limitation souligne l'importance cruciale de la collecte de données réelles diversifiées pour les classes critiques.
 
-\subsection{Perspectives de recherche et recommandations}
+\section{Perspectives de recherche et recommandations}
 
 Les résultats obtenus ouvrent plusieurs axes de développement prometteurs pour améliorer les capacités de détection d'intrusions.
 
-\subsubsection{Améliorations architecturales immédiates}
+\subsection{Améliorations architecturales immédiates}
 
 L'extension vers une architecture multi-niveaux intégrant une troisième étape spécialisée dans la détection R2L et U2R constitue une évolution naturelle de notre approche. Cette étape pourrait exploiter des caractéristiques dérivées spécifiques (analyse temporelle, patterns comportementaux longitudinaux) et des techniques d'apprentissage profond plus sophistiquées (LSTM, Transformers).
 
 L'intégration d'explicabilité (XAI) améliorerait l'acceptabilité opérationnelle en permettant aux experts sécurité de comprendre et valider les décisions automatisées. Les techniques SHAP ou LIME pourraient identifier les caractéristiques déterminantes pour chaque prédiction, facilitant l'amélioration itérative des modèles.
 
-\subsubsection{Innovations méthodologiques futures}
+\subsection{Innovations méthodologiques futures}
 
 L'apprentissage actif représente une piste prometteuse pour optimiser la collecte de nouveaux échantillons d'entraînement. En identifiant automatiquement les régions d'incertitude du modèle, cette approche guiderait la collecte ciblée de données pour les classes problématiques.
 
@@ -96,7 +96,7 @@ L'apprentissage fédéré offre des perspectives d'amélioration collaborative s
 
 L'intégration de graphes de connaissances cybersécuritaires (MITRE ATT et CK) pourrait guider l'apprentissage vers des représentations alignées avec l'expertise humaine, combinant apprentissage automatique et connaissances expertes structurées.
 
-\subsubsection{Recommandations pour le déploiement opérationnel}
+\subsection{Recommandations pour le déploiement opérationnel}
 
 Nos résultats supportent un déploiement opérationnel immédiat pour la détection du trafic normal et des attaques DoS, avec surveillance renforcée pour les classes problématiques. Nous recommandons une approche hybride intégrant :
 
@@ -107,7 +107,7 @@ Nos résultats supportent un déploiement opérationnel immédiat pour la détec
     \item Un processus de mise à jour continue des modèles basé sur les nouvelles menaces détectées
 \end{itemize}
 
-\subsection{Impact et contribution à la cybersécurité}
+\section{Impact et contribution à la cybersécurité}
 
 Cette recherche contribue significativement à l'avancement de la cybersécurité en démontrant la viabilité opérationnelle des approches d'apprentissage automatique hiérarchiques pour la détection d'intrusions réseau. Notre méthodologie, par sa reproductibilité et sa documentation exhaustive, facilite l'adoption et l'extension par la communauté scientifique et industrielle.
 
@@ -115,7 +115,7 @@ L'identification précise des classes d'attaques problématiques oriente les eff
 
 Au-delà des contributions techniques, ce travail sensibilise la communauté aux défis méthodologiques de l'évaluation en cybersécurité, promouvant des pratiques d'évaluation plus rigoureuses et la validation multi-datasets pour renforcer la robustesse des conclusions scientifiques.
 
-\subsection{Conclusion finale}
+\section{Conclusion finale}
 
 Ce mémoire démontre qu'une approche méthodique combinant apprentissage hiérarchique, techniques d'équilibrage avancées et intégration d'approches supervisées et non-supervisées peut produire un système de détection d'intrusions performant et déployable opérationnellement. Bien que des défis persistent, particulièrement pour les attaques sophistiquées, les résultats obtenus valident la pertinence de l'apprentissage automatique pour répondre aux enjeux contemporains de cybersécurité.
 

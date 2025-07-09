@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper]{article}
+\documentclass[12pt,a4paper]{report}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[french]{babel}
@@ -70,30 +70,36 @@
         {\small \color{graytext} Spécialité : Mathématiques Appliquées pour la Science des Données}
     \end{center}
 
-    \vspace{1.5cm}
+    \vspace{0.5cm}
 
     % Type de document
     \begin{center}
-        \colorbox{lightgraybox}{\color{blueuniv}\Large\textbf{\quad MÉMOIRE DE MASTER \quad}}
+        \colorbox{lightgraybox}{\color{blueuniv}\Large\textbf{\quad MÉMOIRE DE MASTER DE RECHERCHE \quad}}
     \end{center}
 
-    \vspace{1.5cm}
+    \vspace{0.5cm}
 
-    % Titre du mémoire
     \begin{center}
-        \begin{tikzpicture}
-            \node[rectangle, draw=blueuniv, line width=2pt, rounded corners=10pt, 
-                  inner sep=15pt, text width=0.85\textwidth, text centered] {
-                {\LARGE \textbf{\color{blueuniv}Détection d'Intrusion Réseau par Apprentissage Automatique}}\\
-                \vspace{0.4cm}
-                {\Large \textbf{\color{graytext}Une Approche Hiérarchique Basée sur les Données}}\\
-                \vspace{0.3cm}
-                {\large \textit{\color{graytext}Network Intrusion Detection using Machine Learning: A Hierarchical Data-driven Approach}}
-            };
-        \end{tikzpicture}
-    \end{center}
+    \begin{tikzpicture}
+        % Ombre portée
+        \node[rectangle, fill=black!20, rounded corners=12pt, 
+              inner sep=17pt, text width=0.85\textwidth] at (0.15,-0.15) {};
+        
+        % Boîte principale avec dégradé
+        \node[rectangle, draw=blueuniv, line width=3pt, rounded corners=12pt, 
+              fill=lightblue!10, inner sep=17pt, text width=0.85\textwidth, text centered] {
+            {\fontsize{17}{21}\selectfont \textbf{\color{blueuniv}DÉTECTION ET CLASSIFICATION}}\\ 
+            {\fontsize{17}{21}\selectfont \textbf{\color{blueuniv}D'INTRUSIONS RÉSEAU}}\\
+            {\fontsize{17}{21}\selectfont \textbf{\color{blueuniv}PAR APPRENTISSAGE AUTOMATIQUE}}\\
+            \vspace{0.5cm}
+            {\Large \textbf{\color{graytext}Une Approche Hiérarchique Basée sur les Données}}\\
+            \vspace{0.2cm}
+            \rule{0.6\textwidth}{1pt}
+        };
+    \end{tikzpicture}
+\end{center}
 
-    \vspace{1.5cm}
+    \vspace{0.3cm}
 
     % Étudiant et encadrant
     \begin{center}
@@ -134,23 +140,37 @@
         \end{minipage}
     \end{center}
 
-    \vspace{1.5cm}
+    \vspace{0.5cm}
+
+   % Jury de soutenance
+    \begin{center}
+        \colorbox{lightgraybox}{\color{blueuniv}\normalsize\textbf{\quad JURY DE SOUTENANCE \quad}}\\
+        \vspace{0.5cm}
+        
+        % Tableau du jury
+        \begin{tabular}{@{}lll@{}}
+    Nom & Entité & Rôle \\
+    \midrule
+    M. Jaouad OUDAANI & Faculté Polydisciplinaire de Ouarzazate & Président \\
+    M. Rabiâ RIAD & Faculté Polydisciplinaire de Ouarzazate & Examinateur \\
+    M. Abdelkarim ELMOUATASSIM & Faculté Polydisciplinaire de Ouarzazate & Encadrant \\
+    
+    
+  \end{tabular}
+    \end{center}
+
+    \vspace{0.5cm}
 
     % Date et informations
     \begin{center}
-        \begin{tikzpicture}
-            \node[rectangle, draw=graytext, line width=1pt, rounded corners=5pt, 
-                  inner sep=10pt, fill=white] {
-                \begin{minipage}{0.6\textwidth}
-                    \centering
-                    {\normalsize \textbf{Soutenu le : 15 Juin 2025}}\\
-                    \vspace{0.2cm}
-                    Année universitaire : 2024-2025\\
-                    \vspace{0.2cm}
-                    \textcopyright{} 2025 - Université Ibn Zohr, Ouarzazate, Maroc
-                \end{minipage}
-            };
-        \end{tikzpicture}
+        \begin{minipage}{0.6\textwidth}
+            \centering
+            {\normalsize \textbf{Soutenu le : 4 Juillet 2025}}\\
+            \vspace{0.2cm}
+            Année universitaire : 2024-2025\\
+            \vspace{0.2cm}
+            \textcopyright{} 2025 - Université Ibn Zohr, Ouarzazate, Maroc
+        \end{minipage}
     \end{center}
 
     \restoregeometry

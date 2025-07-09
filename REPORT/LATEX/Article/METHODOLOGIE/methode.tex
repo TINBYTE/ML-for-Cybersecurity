@@ -1,33 +1,33 @@
-% Section Méthodologie
+% Chapitre Méthodologie
 \newpage
-\section{MÉTHODOLOGIE}
+\chapter{MÉTHODOLOGIE}
 
 Cette section présente en détail l'approche méthodologique développée pour la détection d'intrusions réseau. Notre stratégie repose sur une architecture hiérarchique combinant apprentissage supervisé et non-supervisé, appliquée au jeu de données NSL-KDD. L'ensemble du processus, depuis le prétraitement des données jusqu'à la classification finale, est conçu pour optimiser à la fois la précision de détection et la capacité de discrimination entre les différents types d'attaques.
 
-\subsection{Architecture générale du système}
+\section{Architecture générale du système}
 
 Notre système de détection d'intrusions adopte une approche hiérarchique en deux étapes distinctes, illustrée dans la Figure~\ref{fig:pipeline_general}. Cette architecture permet une analyse progressive du trafic réseau, commençant par une classification binaire robuste avant d'affiner la caractérisation des menaces détectées.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{Assets/ARCHITECTEUR ML.png}
+    \includegraphics[width=0.8\textwidth]{Assets/ARCHITECTEUR ML.png}
     \caption{Architecture générale du système de détection d'intrusions hiérarchique}
     \label{fig:pipeline_general}
 \end{figure}
 
 La première étape effectue une discrimination fondamentale entre le trafic normal et les activités suspectes. Cette phase mobilise plusieurs algorithmes d'apprentissage automatique, incluant des approches supervisées traditionnelles et une méthode non-supervisée basée sur un autoencodeur. La seconde étape se concentre sur la classification fine des intrusions détectées, catégorisant les attaques selon quatre typologies reconnues dans la littérature scientifique.
 
-\subsection{Jeu de données NSL-KDD}
+\section{Jeu de données NSL-KDD}
 
-\subsubsection{Présentation et structure}
+\subsection{Présentation et structure}
 
 Le jeu de données NSL-KDD constitue une version améliorée du célèbre dataset KDD Cup 99, corrigeant plusieurs limitations de son prédécesseur. Ce dataset comprend 125,973 enregistrements d'entraînement et 22,544 enregistrements de test, chaque instance étant caractérisée par 41 attributs décrivant les propriétés d'une connexion réseau.
 
-\subsubsection{Description détaillée des 41 caractéristiques}
+\subsection{Description détaillée des 41 caractéristiques}
 
 Les caractéristiques du dataset NSL-KDD se répartissent en trois catégories principales, chacune capturant des aspects différents du comportement réseau :
 
-\paragraph{Caractéristiques de base (9 attributs)}
+\subsubsection{Caractéristiques de base (9 attributs)}
 Ces attributs sont directement extraits des en-têtes de paquets TCP/IP et représentent les propriétés fondamentales d'une connexion :
 
 \begin{itemize}
@@ -42,7 +42,7 @@ Ces attributs sont directement extraits des en-têtes de paquets TCP/IP et repr�
     \item \textbf{urgent} : Nombre de paquets urgents
 \end{itemize}
 
-\paragraph{Caractéristiques de trafic (13 attributs)}
+\subsubsection{Caractéristiques de trafic (13 attributs)}
 Ces statistiques sont calculées sur une fenêtre glissante de 100 connexions et analysent les patterns de comportement :
 
 \textbf{Statistiques "même hôte" :}
@@ -66,7 +66,7 @@ Ces statistiques sont calculées sur une fenêtre glissante de 100 connexions et
     \item \textbf{dst\_host\_same\_src\_port\_rate} : Pourcentage de connexions utilisant le même port source
 \end{itemize}
 
-\paragraph{Caractéristiques de contenu (19 attributs)}
+\subsubsection{Caractéristiques de contenu (19 attributs)}
 Ces attributs analysent le contenu des paquets et sont particulièrement utiles pour détecter les attaques R2L et U2R :
 
 \textbf{Indicateurs d'accès privilégié :}
@@ -103,7 +103,7 @@ Ces attributs analysent le contenu des paquets et sont particulièrement utiles 
     \item \textbf{dst\_host\_srv\_rerror\_rate} : Pourcentage de connexions vers le même service ayant une erreur REJ
 \end{itemize}
 
-\subsubsection{Taxonomie des attaques}
+\subsection{Taxonomie des attaques}
 
 NSL-KDD organise les intrusions selon quatre catégories principales, chacune représentant un mode opératoire distinct :
 
@@ -133,9 +133,9 @@ NSL-KDD organise les intrusions selon quatre catégories principales, chacune re
     \label{fig:data_distribution}
 \end{figure}
 
-\subsection{Prétraitement des données}
+\section{Prétraitement des données}
 
-\subsubsection{Encodage des variables catégorielles}
+\subsection{Encodage des variables catégorielles}
 
 Le jeu de données NSL-KDD contient trois attributs catégoriels : le type de protocole, le service réseau et l'état de la connexion. Ces variables textuelles nécessitent une transformation numérique pour être exploitables par les algorithmes d'apprentissage automatique.
 
@@ -147,7 +147,7 @@ Nous appliquons un encodage par fréquence (Label Frequency Encoding) qui attrib
 
 où $\text{freq}(c_i)$ représente la fréquence d'apparition de la catégorie $c_i$ et $\text{rank}$ attribue un rang basé sur cette fréquence.
 
-\subsubsection{Normalisation des données}
+\subsection{Normalisation des données}
 
 La standardisation des caractéristiques numériques constitue une étape cruciale pour assurer l'efficacité des algorithmes d'apprentissage automatique. Nous appliquons la standardisation Z-score :
 
@@ -157,13 +157,13 @@ La standardisation des caractéristiques numériques constitue une étape crucia
 
 où $x_i$ représente la valeur originale, $\mu$ la moyenne arithmétique et $\sigma$ l'écart-type de la caractéristique considérée.
 
-\subsection{Algorithmes d'apprentissage automatique}
+\section{Algorithmes d'apprentissage automatique}
 
-\subsubsection{Arbres de décision}
+\subsection{Arbres de décision}
 
 Les arbres de décision constituent une famille d'algorithmes d'apprentissage supervisé particulièrement adaptée à l'interprétabilité. Un arbre de décision partitionne récursivement l'espace des caractéristiques en utilisant des tests binaires sur les attributs.
 
-\paragraph{Critère de division}
+\subsubsection{Critère de division}
 Pour construire l'arbre, nous utilisons le critère d'entropie. L'entropie d'un ensemble $S$ est définie par :
 
 \begin{equation}
@@ -179,7 +179,7 @@ $\{S_1, S_2, ..., S_v\}$ est :
     \text{Gain}(S,A) = H(S) - \sum_{j=1}^{v} \frac{|S_j|}{|S|} H(S_j)
 \end{equation}
 
-\paragraph{Critère d'arrêt}
+\subsubsection{Critère d'arrêt}
 L'algorithme s'arrête lorsque :
 \begin{itemize}
     \item Tous les exemples appartiennent à la même classe
@@ -188,11 +188,11 @@ L'algorithme s'arrête lorsque :
     \item Le gain d'information est inférieur à un seuil prédéfini
 \end{itemize}
 
-\subsubsection{Forêts aléatoires}
+\subsection{Forêts aléatoires}
 
 Les forêts aléatoires combinent plusieurs arbres de décision selon le principe du bagging (Bootstrap AGGregatING). Cette méthode d'ensemble améliore la robustesse et la généralisation.
 
-\paragraph{Algorithme de construction}
+\subsubsection{Algorithme de construction}
 Pour construire une forêt de $T$ arbres :
 
 \begin{enumerate}
@@ -204,7 +204,7 @@ Pour construire une forêt de $T$ arbres :
     \end{itemize}
 \end{enumerate}
 
-\paragraph{Prédiction}
+\subsubsection{Prédiction}
 La prédiction finale est obtenue par vote majoritaire pour la classification :
 
 \begin{equation}
@@ -219,11 +219,11 @@ La probabilité de classe $k$ est estimée par :
 
 où $\mathbb{I}$ est la fonction indicatrice.
 
-\subsubsection{Machines à vecteurs de support (SVM)}
+\subsection{Machines à vecteurs de support (SVM)}
 
 Les SVM recherchent l'hyperplan optimal séparant les classes en maximisant la marge entre les points les plus proches de chaque classe.
 
-\paragraph{Formulation mathématique}
+\subsubsection{Formulation mathématique}
 Pour un problème de classification binaire avec des données linéairement séparables, l'objectif est de trouver l'hyperplan $\mathbf{w}^T\mathbf{x} + b = 0$ qui maximise la marge.
 
 Le problème d'optimisation s'écrit :
@@ -233,7 +233,7 @@ Le problème d'optimisation s'écrit :
     \text{s.t.} &\quad y_i(\mathbf{w}^T\mathbf{x}_i + b) \geq 1, \quad i = 1, ..., n
 \end{align}
 
-\paragraph{Cas non-linéairement séparable}
+\subsubsection{Cas non-linéairement séparable}
 Pour traiter les cas non-linéairement séparables, nous introduisons des variables de relaxation $\xi_i$ :
 
 \begin{align}
@@ -244,7 +244,7 @@ Pour traiter les cas non-linéairement séparables, nous introduisons des variab
 
 où $C$ est le paramètre de régularisation contrôlant le compromis entre la maximisation de la marge et la minimisation des erreurs de classification.
 
-\paragraph{Noyau RBF}
+\subsubsection{Noyau RBF}
 Pour capturer les relations non-linéaires, nous utilisons le noyau gaussien (RBF) :
 
 \begin{equation}
@@ -253,11 +253,11 @@ Pour capturer les relations non-linéaires, nous utilisons le noyau gaussien (RB
 
 où $\gamma$ contrôle l'influence de chaque exemple d'entraînement.
 
-\subsubsection{Réseaux de neurones multi-couches (MLP)}
+\subsection{Réseaux de neurones multi-couches (MLP)}
 
 Le perceptron multi-couches est un réseau de neurones feedforward capable d'apprendre des relations non-linéaires complexes.
 
-\paragraph{Architecture}
+\subsubsection{Architecture}
 Notre MLP comprend :
 \begin{itemize}
     \item Couche d'entrée : 41 neurones
@@ -265,21 +265,21 @@ Notre MLP comprend :
     \item Couche de sortie : 2 neurones avec activation softmax (classification binaire)
 \end{itemize}
 
-\paragraph{Fonction d'activation ReLU}
+\subsubsection{Fonction d'activation ReLU}
 La fonction ReLU (Rectified Linear Unit) est définie par :
 
 \begin{equation}
     \text{ReLU}(x) = \max(0, x)
 \end{equation}
 
-\paragraph{Fonction softmax}
+\subsubsection{Fonction softmax}
 Pour la couche de sortie, la fonction softmax normalise les sorties en probabilités :
 
 \begin{equation}
     \text{softmax}(z_i) = \frac{e^{z_i}}{\sum_{j=1}^{K} e^{z_j}}
 \end{equation}
 
-\paragraph{Propagation avant}
+\subsubsection{Propagation avant}
 Pour une couche $l$, le calcul s'effectue selon :
 
 \begin{align}
@@ -289,14 +289,14 @@ Pour une couche $l$, le calcul s'effectue selon :
 
 où $\mathbf{W}^{(l)}$ et $\mathbf{b}^{(l)}$ sont respectivement la matrice de poids et le vecteur de biais de la couche $l$, et $f$ est la fonction d'activation.
 
-\paragraph{Fonction de coût}
+\subsubsection{Fonction de coût}
 Nous utilisons l'entropie croisée comme fonction de coût :
 
 \begin{equation}
     J(\theta) = -\frac{1}{m}\sum_{i=1}^{m}\sum_{k=1}^{K} y_k^{(i)} \log(\hat{y}_k^{(i)})
 \end{equation}
 
-\paragraph{Rétropropagation}
+\subsubsection{Rétropropagation}
 Les gradients sont calculés par rétropropagation :
 
 \begin{align}
@@ -306,11 +306,11 @@ Les gradients sont calculés par rétropropagation :
 
 où $\boldsymbol{\delta}^{(l)}$ est l'erreur de la couche $l$.
 
-\subsubsection{AdaBoost}
+\subsection{AdaBoost}
 
 AdaBoost (Adaptive Boosting) est une méthode d'ensemble qui combine séquentiellement des classificateurs faibles en se concentrant sur les exemples difficiles à classifier.
 
-\paragraph{Algorithme AdaBoost}
+\subsubsection{Algorithme AdaBoost}
 \begin{enumerate}
     \item Initialiser les poids : $w_1^{(i)} = \frac{1}{m}$ pour $i = 1, ..., m$
     \item Pour $t = 1$ à $T$ :
@@ -336,9 +336,9 @@ AdaBoost (Adaptive Boosting) est une méthode d'ensemble qui combine séquentiel
     \end{equation}
 \end{enumerate}
 
-\subsection{Architecture des modèles spécialisés}
+\section{Architecture des modèles spécialisés}
 
-\subsubsection{Autoencodeur pour la détection d'anomalies}
+\subsection{Autoencodeur pour la détection d'anomalies}
 
 L'autoencodeur constitue l'élément central de notre approche non-supervisée pour la classification binaire.
 
@@ -349,7 +349,7 @@ L'autoencodeur constitue l'élément central de notre approche non-supervisée p
     \label{fig:autoencoder}
 \end{figure}
 
-\paragraph{Architecture}
+\subsubsection{Architecture}
 Notre autoencodeur se compose de :
 \begin{itemize}
     \item \textbf{Couche d'entrée} : 41 neurones avec bruit gaussien $\mathcal{N}(0, 0.15^2)$
@@ -357,7 +357,7 @@ Notre autoencodeur se compose de :
     \item \textbf{Couche de décodage} : 41 neurones avec activation SELU
 \end{itemize}
 
-\paragraph{Fonction d'activation SELU}
+\subsubsection{Fonction d'activation SELU}
 La fonction SELU (Scaled Exponential Linear Unit) est définie par :
 
 \begin{equation}
@@ -369,14 +369,14 @@ La fonction SELU (Scaled Exponential Linear Unit) est définie par :
 
 avec $\alpha = 1.6732632423543772$ et $\lambda = 1.0507009873554805$.
 
-\paragraph{Fonction de coût}
+\subsubsection{Fonction de coût}
 L'erreur quadratique moyenne (MSE) est utilisée comme fonction de coût :
 
 \begin{equation}
     \mathcal{L}_{\text{MSE}} = \frac{1}{n}\sum_{i=1}^{n}\|\mathbf{x}_i - \hat{\mathbf{x}}_i\|^2
 \end{equation}
 
-\paragraph{Détection d'anomalies}
+\subsubsection{Détection d'anomalies}
 L'erreur de reconstruction pour un échantillon $\mathbf{x}$ est :
 
 \begin{equation}
@@ -389,9 +389,9 @@ Le seuil de détection est défini comme le 95ème percentile des erreurs de rec
     \tau = \text{percentile}_{95}(\{\text{erreur\_reconstruction}(\mathbf{x}_i) : y_i = \text{normal}\})
 \end{equation}
 
-\subsubsection{Réseau de neurones profond pour classification multi-classes}
+\subsection{Réseau de neurones profond pour classification multi-classes}
 
-\paragraph{Architecture}
+\subsubsection{Architecture}
 Le DNN comprend :
 \begin{itemize}
     \item \textbf{Couche d'entrée} : 41 neurones
@@ -400,26 +400,26 @@ Le DNN comprend :
     \item \textbf{Couche de sortie} : 4 neurones, softmax
 \end{itemize}
 
-\paragraph{Fonction de coût}
+\subsubsection{Fonction de coût}
 L'entropie croisée sparse est utilisée :
 
 \begin{equation}
     \mathcal{L} = -\frac{1}{N}\sum_{i=1}^{N} \log(p_{y_i})
 \end{equation}
 
-\subsection{Stratégie hiérarchique}
+\section{Stratégie hiérarchique}
 
-\subsubsection{Étape 1 : Classification binaire}
+\subsection{Étape 1 : Classification binaire}
 
 La première étape distingue le trafic normal des activités malveillantes. Nous évaluons tous les algorithmes présentés et sélectionnons le plus performant.
 
-\subsubsection{Étape 2 : Classification des types d'attaques}
+\subsection{Étape 2 : Classification des types d'attaques}
 
 Cette étape utilise uniquement les échantillons classifiés comme malveillants, permettant une spécialisation sur la discrimination entre types d'attaques.
 
-\subsection{Gestion du déséquilibre : SVM-SMOTE}
+\section{Gestion du déséquilibre : SVM-SMOTE}
 
-\subsubsection{Algorithme SVM-SMOTE}
+\subsection{Algorithme SVM-SMOTE}
 
 SVM-SMOTE améliore SMOTE en utilisant un SVM pour identifier les échantillons critiques :
 
@@ -444,9 +444,9 @@ SVM-SMOTE améliore SMOTE en utilisant un SVM pour identifier les échantillons 
     \label{fig:smote}
 \end{figure}
 
-\subsection{Métriques d'évaluation}
+\section{Métriques d'évaluation}
 
-\subsubsection{Métriques de base}
+\subsection{Métriques de base}
 
 \begin{align}
     \text{Précision} &= \frac{TP}{TP + FP} \\
@@ -455,7 +455,7 @@ SVM-SMOTE améliore SMOTE en utilisant un SVM pour identifier les échantillons 
     \text{Exactitude} &= \frac{TP + TN}{TP + TN + FP + FN}
 \end{align}
 
-\subsubsection{Métriques agrégées}
+\subsection{Métriques agrégées}
 
 \begin{align}
     \text{F1-macro} &= \frac{1}{K}\sum_{k=1}^{K} \text{F1-score}_k \\

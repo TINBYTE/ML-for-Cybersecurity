@@ -1,12 +1,12 @@
-% Section Résultats
+% Chapitre Résultats
 \newpage
-\section{RÉSULTATS}
+\chapter{RÉSULTATS}
 
 Cette section présente l'évaluation exhaustive de notre système de détection d'intrusions hiérarchique appliqué au jeu de données NSL-KDD. Les résultats sont organisés selon notre méthodologie en deux étapes : classification binaire suivie de la classification multi-classes. Une analyse détaillée des performances, incluant l'impact des techniques d'équilibrage et les limitations identifiées, complète cette évaluation.
 
-\subsection{Caractérisation du jeu de données NSL-KDD}
+\section{Caractérisation du jeu de données NSL-KDD}
 
-\subsubsection{Statistiques descriptives}
+\subsection{Statistiques descriptives}
 
 Le dataset NSL-KDD utilisé dans nos expérimentations comprend 125,973 échantillons d'entraînement et 22,544 échantillons de test, chacun caractérisé par 40 attributs apr\`{e}s préprocessing. Le Tableau~\ref{tab:dataset_summary} résume les propriétés principales du jeu de données.
 
@@ -26,7 +26,7 @@ Le dataset NSL-KDD utilisé dans nos expérimentations comprend 125,973 échanti
 
 La répartition des 40 caractéristiques révèle une prédominance des variables numériques (37 attributs) par rapport aux variables catégorielles (3 attributs), facilitant l'application des algorithmes d'apprentissage automatique.
 
-\subsubsection{Distribution des protocoles et services}
+\subsection{Distribution des protocoles et services}
 
 L'analyse révèle une forte concentration sur quelques protocoles majoritaires. HTTP domine avec 40,338 occurrences (32,0\%), suivi par les connexions privées (21,853, 17,3\%) et domain\_u (9,043, 7,2\%). Cette distribution reflète les patterns typiques du trafic réseau réel, où certains services génèrent la majorité des connexions.
 
@@ -39,7 +39,7 @@ L'analyse révèle une forte concentration sur quelques protocoles majoritaires.
 
 L'analyse des états de connexion (flags) montre une prédominance des connexions réussies (SF : 59,5\%) et des connexions refusées ou interrompues (S0 : 27,7\%, REJ : 8,9\%), cohérente avec les comportements attendus dans un environnement réseau mixte incluant des tentatives d'intrusion.
 
-\subsubsection{Répartition des classes d'attaques}
+\subsection{Répartition des classes d'attaques}
 
 La distribution des classes dans le dataset d'entraînement révèle un équilibre relatif entre le trafic normal (67,343 échantillons, 53,5\%) et les attaques (58,630 échantillons, 46,5\%). Cependant, l'analyse des sous-catégories d'attaques révèle un déséquilibre significatif :
 
@@ -65,9 +65,9 @@ La distribution des classes dans le dataset d'entraînement révèle un équilib
 
 Cette distribution révèle un déséquilibre critique avec un ratio de 1295:1 entre la classe majoritaire (Normal) et minoritaire (U2R), justifiant l'application de techniques d'équilibrage pour améliorer la détection des classes sous-représentées.
 
-\subsection{Résultats de la classification binaire}
+\section{Résultats de la classification binaire}
 
-\subsubsection{Performances comparatives des algorithmes supervisés}
+\subsection{Performances comparatives des algorithmes supervisés}
 
 L'évaluation de sept algorithmes d'apprentissage supervisé pour la classification binaire révèle des performances variables selon les métriques considérées. Le Tableau~\ref{tab:binary_results} présente les résultats détaillés.
 
@@ -102,11 +102,11 @@ Le perceptron multi-couches (MLP) démontre les meilleures performances globales
 
 Naive Bayes optimise le temps/performance (0,1s, F1=0,772) tandis que SVM nécessite 475,2s malgré d'excellentes performances.
 
-\subsubsection{Évaluation de l'autoencodeur}
+\subsection{Évaluation de l'autoencodeur}
 
 L'autoencodeur, représentant notre approche non-supervisée, atteint des performances remarquables avec un F1-score de 0,745 et une accuracy de 0,756. Ces résultats sont particulièrement significatifs considérant que le modèle est entraîné uniquement sur des données normales.
 
-\paragraph{Processus d'entraînement}
+\subsubsection{Processus d'entraînement}
 L'entraînement de l'autoencodeur s'est achevé apr\`{e}s 37 époques avec convergence stable. La perte finale d'entraînement (MSE = 0,106) et de validation (MSE = 0,054) indiquent une bonne généralisation sans surapprentissage.
 
 \begin{figure}[H]
@@ -116,7 +116,7 @@ L'entraînement de l'autoencodeur s'est achevé apr\`{e}s 37 époques avec conve
     \label{fig:ae_training}
 \end{figure}
 
-\paragraph{Détermination du seuil optimal}
+\subsubsection{Détermination du seuil optimal}
 Le seuil de détection d'anomalies, fixé au 95\`{e}me percentile des erreurs de reconstruction sur les données normales, s'établit à 0,1696. Cette valeur optimise le compromis entre sensibilité et spécificité pour la détection d'intrusions.
 
 \begin{figure}[H]
@@ -128,9 +128,9 @@ Le seuil de détection d'anomalies, fixé au 95\`{e}me percentile des erreurs de
 
 L'analyse de la distribution des erreurs de reconstruction montre une séparation claire entre les patterns normaux (moyenne = 0,061) et les attaques (moyenne = 0,421), validant l'efficacité de l'approche par autoencodeur pour la détection d'anomalies.
 
-\subsection{Classification multi-classes avec gestion du déséquilibre}
+\section{Classification multi-classes avec gestion du déséquilibre}
 
-\subsubsection{Impact de la technique SVM-SMOTE}
+\subsection{Impact de la technique SVM-SMOTE}
 
 L'application de SVM-SMOTE transforme radicalement la distribution des classes d'entraînement, passant de 125,973 à 336,715 échantillons. Cette augmentation de 210,742 échantillons synthétiques rééquilibre toutes les classes minoritaires au niveau de la classe majoritaire (67,343 échantillons chacune).
 
@@ -159,7 +159,7 @@ L'évaluation comparative révèle l'efficacité de cette technique :
 
 L'amélioration du F1-score macro (+15,6\%) démontre l'efficacité particulière de SMOTE pour les classes minoritaires, bien que l'amélioration de l'accuracy globale reste modeste (+3,3\%).
 
-\subsubsection{Performances détaillées par classe d'attaque}
+\subsection{Performances détaillées par classe d'attaque}
 
 Le réseau de neurones profond entraîné sur les données équilibrées atteint une accuracy globale de 0,789 avec un F1-macro de 0,601. L'analyse détaillée par classe révèle des performances hétérogènes :
 
@@ -196,7 +196,7 @@ Les résultats révèlent une hiérarchie claire de performances :
     \item \textbf{Critique} : R2L (14,8\%) et U2R (29,9\%) - Performances insuffisantes pour les attaques sophistiquées
 \end{itemize}
 
-\subsubsection{Analyse de la matrice de confusion}
+\subsection{Analyse de la matrice de confusion}
 
 La matrice de confusion normalisée (Figure~\ref{fig:confusion_matrix}) révèle les patterns de classification erronée les plus problématiques :
 
@@ -217,9 +217,9 @@ L'analyse des confusions principales identifie :
 
 Ces patterns révèlent la difficulté particulière à distinguer les attaques sophistiquées (R2L, U2R) du trafic normal, nécessitant des approches spécialisées pour ces classes critiques.
 
-\subsection{Analyse comparative et validation}
+\section{Analyse comparative et validation}
 
-\subsubsection{Efficacité de l'approche hiérarchique}
+\subsection{Efficacité de l'approche hiérarchique}
 
 L'architecture hiérarchique proposée démontre sa pertinence par la spécialisation progressive des modèles. La première étape (classification binaire) atteint d'excellentes performances globales (F1 = 0,816), tandis que la seconde étape permet une caractérisation fine des types d'attaques malgré les défis posés par le déséquilibre des classes.
 
@@ -230,11 +230,11 @@ L'architecture hiérarchique proposée démontre sa pertinence par la spécialis
     \label{fig:detailed_metrics}
 \end{figure}
 
-\subsubsection{Robustesse et généralisation}
+\subsection{Robustesse et généralisation}
 
 L'évaluation de la robustesse révèle des performances cohérentes entre les datasets d'entraînement et de test, indiquant une bonne capacité de généralisation. Les écarts observés (notamment pour les classes R2L et U2R) s'expliquent principalement par les différences de distribution entre les datasets plutôt que par un surapprentissage.
 
-\subsubsection{Limitations identifiées}
+\subsection{Limitations identifiées}
 
 Notre analyse révèle trois limitations principales :
 
@@ -246,7 +246,7 @@ Notre analyse révèle trois limitations principales :
     \item \textbf{Généralisation temporelle} : L'évaluation sur NSL-KDD, bien que standard, ne garantit pas les performances sur des attaques contemporaines.
 \end{enumerate}
 
-\subsection{Synthèse des contributions}
+\section{Synthèse des contributions}
 
 Nos expérimentations démontrent plusieurs contributions significatives :
 

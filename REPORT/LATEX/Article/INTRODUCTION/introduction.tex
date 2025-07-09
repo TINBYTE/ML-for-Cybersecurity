@@ -1,84 +1,31 @@
-% Introduction - Page 1
+% Chapitre Introduction - Version très courte
 \newpage
-\section*{INTRODUCTION}
-\addcontentsline{toc}{section}{Introduction}
+\chapter*{INTRODUCTION}
+\addcontentsline{toc}{chapter}{Introduction}
 
 \setcounter{page}{1}
 
 \noindent
-À l'ère du numérique, les systèmes d'information constituent l'épine dorsale de nos sociétés modernes. Des entreprises multinationales aux institutions gouvernementales, en passant par les services publics essentiels, l'ensemble de notre infrastructure économique et sociale repose désormais sur des réseaux informatiques complexes et interconnectés. Cette dépendance croissante aux technologies de l'information, bien qu'elle offre des opportunités sans précédent en termes d'efficacité et de connectivité, expose simultanément nos systèmes à des risques de sécurité considérables.
+À l'ère du numérique, la dépendance croissante aux technologies de l'information expose nos infrastructures à des risques de sécurité considérables. L'augmentation alarmante des cyberattaques, avec des conséquences financières chiffrées en milliards d'euros, révèle l'insuffisance des systèmes de détection d'intrusions (IDS) traditionnels basés sur des signatures. Ces derniers présentent des limitations majeures, notamment leur incapacité à détecter les nouvelles formes d'attaques (zero-day).
 
-\vspace{0.4cm}
-
-\noindent
-Les statistiques récentes révèlent une augmentation alarmante des cyberattaques à l'échelle mondiale. Selon les rapports de cybersécurité, le nombre d'incidents de sécurité informatique a triplé au cours de la dernière décennie, avec des conséquences financières se chiffrant en milliards d'euros annuellement. Les attaques deviennent progressivement plus sophistiquées, exploitant des vulnérabilités techniques avancées et adoptant des stratégies d'intrusion de plus en plus subtiles. Face à cette menace persistante et évolutive, la communauté scientifique et industrielle s'efforce de développer des mécanismes de défense innovants et efficaces.
-
-\vspace{0.4cm}
+\vspace{0.5cm}
 
 \noindent
-Dans ce contexte, les systèmes de détection d'intrusions (IDS - Intrusion Detection Systems) émergent comme une composante fondamentale de l'architecture de sécurité moderne. Ces systèmes ont pour mission de surveiller en continu le trafic réseau, d'identifier les comportements anormaux et de signaler les tentatives d'intrusion potentielles. Traditionnellement, les IDS s'appuyaient sur des approches basées sur des signatures, comparant les patterns de trafic observés à des bases de données d'attaques connues. Cependant, cette méthodologie présente des limitations importantes, notamment son incapacité à détecter les nouvelles formes d'attaques (zero-day attacks) et sa dépendance à des mises à jour fréquentes des bases de signatures.
+L'apprentissage automatique offre des perspectives prometteuses pour surmonter ces défis en permettant l'apprentissage automatique à partir des données historiques et l'adaptation aux nouveaux types de menaces. Cependant, son application à la cybersécurité soulève des défis spécifiques, principalement le déséquilibre prononcé des données où les échantillons d'attaques représentent une fraction minime du trafic total.
 
-\vspace{0.4cm}
-
-\noindent
-L'émergence de l'apprentissage automatique et de l'intelligence artificielle ouvre de nouvelles perspectives prometteuses pour surmonter ces défis. Les techniques d'apprentissage automatique offrent la capacité d'apprendre automatiquement à partir des données historiques, de généraliser à partir d'exemples et de s'adapter aux nouveaux types de menaces sans intervention humaine explicite. Cette approche data-driven présente l'avantage de pouvoir identifier des patterns complexes et subtils dans le trafic réseau, potentiellement imperceptibles par les méthodes traditionnelles.
-
-\newpage
-
-
-%%%%%%%%%%% p2
-
-
-% Introduction - Page 2
+\vspace{0.5cm}
 
 \noindent
-Les approches d'apprentissage automatique appliquées à la détection d'intrusions se déclinent selon plusieurs paradigmes. L'apprentissage supervisé exploite des jeux de données étiquetés pour entraîner des modèles capables de classifier le trafic réseau en catégories prédéfinies. Les algorithmes comme les forêts aléatoires, les machines à vecteurs de support (SVM) et les réseaux de neurones ont démontré leur efficacité dans ce domaine. Parallèlement, l'apprentissage non-supervisé, notamment à travers les techniques de détection d'anomalies, permet d'identifier des comportements atypiques sans connaissance préalable des types d'attaques, offrant ainsi une capacité de détection proactive.
+Ce mémoire propose une approche innovante basée sur une stratégie hiérarchique d'apprentissage automatique pour la détection d'intrusions réseau, appliquée au dataset NSL-KDD. Notre méthodologie se distingue par une architecture en deux étapes : classification binaire (trafic légitime vs suspect) puis classification fine des types d'intrusions. Pour traiter le déséquilibre des classes, nous implémentons la technique SVM-SMOTE.
 
-\vspace{0.4cm}
-
-\noindent
-Cependant, l'application de l'apprentissage automatique à la cybersécurité soulève des défis techniques spécifiques. Le premier défi concerne la qualité et la représentativité des données d'entraînement. Les jeux de données de cybersécurité souffrent fréquemment d'un déséquilibre prononcé entre les classes, où les échantillons d'attaques représentent une fraction minime du trafic total. Cette asymétrie peut conduire à des modèles biaisés privilégiant la détection du trafic normal au détriment de la sensibilité aux intrusions. Le second défi réside dans la nature évolutive des menaces cybernétiques. Les attaquants adaptent continuellement leurs stratégies, développant de nouvelles techniques pour contourner les systèmes de détection existants, ce qui nécessite des modèles capables d'évoluer et de s'adapter dynamiquement.
-
-\vspace{0.4cm}
+\vspace{0.5cm}
 
 \noindent
-La littérature scientifique révèle diverses approches méthodologiques pour adresser ces problématiques. Certaines recherches se concentrent sur l'amélioration des algorithmes de classification individuels, optimisant leurs hyperparamètres ou développant de nouvelles architectures. D'autres explorent les techniques d'ensemble, combinant plusieurs modèles pour améliorer la robustesse et la précision de la détection. Une troisième voie d'investigation porte sur le préprocessing des données, incluant la sélection de caractéristiques, la réduction de dimensionnalité et les techniques de rééquilibrage des classes.
+Les contributions principales sont : (1) la démonstration de l'efficacité d'une approche hiérarchique combinant apprentissage supervisé et non-supervisé, (2) l'évaluation comparative de différents algorithmes d'apprentissage automatique, (3) la validation de l'impact des techniques de rééquilibrage sur la détection des classes minoritaires.
 
-\vspace{0.4cm}
-
-\noindent
-Parmi les jeux de données de référence utilisés pour évaluer les systèmes de détection d'intrusions, NSL-KDD occupe une position particulière. Héritier du célèbre dataset KDD Cup 99, NSL-KDD corrige plusieurs limitations de son prédécesseur, notamment en éliminant les enregistrements redondants et en proposant une distribution plus équilibrée des classes. Ce dataset comprend une variété d'attaques organisées en quatre catégories principales : les attaques par déni de service (DoS), les tentatives de reconnaissance ou sondage (Probe), les intrusions de type distant vers local (R2L), et les élévations de privilèges (U2R). Cette taxonomie reflète la diversité des menaces rencontrées dans les environnements réseau réels.
-
-\newpage
-
-% Introduction - Page 3
+\vspace{0.5cm}
 
 \noindent
-Face aux défis identifiés et en s'appuyant sur l'état de l'art existant, ce mémoire propose une approche innovante basée sur une stratégie hiérarchique d'apprentissage automatique pour la détection d'intrusions réseau. Notre méthodologie se distingue par l'adoption d'une architecture en deux étapes complémentaires, permettant une analyse progressive et affinée du trafic réseau. Cette approche hiérarchique vise à optimiser à la fois la précision de détection et la capacité de classification fine des différents types d'intrusions.
-
-\vspace{0.4cm}
-
-\noindent
-La première étape de notre système implémente une classification binaire robuste distinguant le trafic légitime des activités suspectes. Cette phase mobilise un ensemble diversifié d'algorithmes d'apprentissage supervisé, incluant les arbres de décision, les forêts aléatoires, les machines à vecteurs de support et les réseaux de neurones multi-couches. En complément de ces approches classiques, nous intégrons un autoencodeur spécialement conçu pour la détection d'anomalies, exploitant les capacités de l'apprentissage non-supervisé pour identifier les patterns atypiques dans le trafic réseau.
-
-\vspace{0.4cm}
-
-\noindent
-La seconde étape affine la classification en catégorisant les intrusions détectées selon les quatre typologies reconnues du dataset NSL-KDD. Pour surmonter le défi du déséquilibre des classes, particulièrement critique pour les attaques de type R2L et U2R, nous implémentons la technique SVM-SMOTE (Support Vector Machine - Synthetic Minority Oversampling Technique). Cette méthode génère des échantillons synthétiques pour les classes minoritaires, améliorant ainsi la représentativité des données d'entraînement et la capacité de généralisation des modèles.
-
-\vspace{0.4cm}
-
-\noindent
-Les contributions principales de cette recherche s'articulent autour de trois axes majeurs. Premièrement, nous démontrons l'efficacité d'une approche hiérarchique combinant apprentissage supervisé et non-supervisé pour la détection d'intrusions. Deuxièmement, nous évaluons de manière comparative les performances de différents algorithmes d'apprentissage automatique dans ce contexte spécifique. Troisièmement, nous validons l'impact positif des techniques de rééquilibrage des données sur la détection des classes minoritaires critiques.
-
-\vspace{0.4cm}
-
-\noindent
-Ce mémoire s'organise en quatre sections principales. Après cette introduction contextuelle, la section méthodologie détaille notre approche hiérarchique, les algorithmes implémentés et les techniques de préprocessing appliquées. La section résultats présente une évaluation exhaustive des performances obtenues, incluant des analyses comparatives et des métriques de validation. Enfin, la section discussion interprète ces résultats, examine leurs implications pour la cybersécurité et propose des perspectives d'amélioration future.
-
-\vspace{0.4cm}
-
-\noindent
-L'objectif ultime de cette recherche est de contribuer à l'advancement des systèmes de détection d'intrusions en proposant une méthodologie robuste, reproductible et adaptable aux environnements réseau contemporains. À travers une validation rigoureuse sur le dataset NSL-KDD, nous aspirons à démontrer la viabilité et l'efficacité de notre approche pour répondre aux défis actuels de la cybersécurité.
+Ce mémoire s'organise en quatre chapitres : méthodologie, résultats, discussion et conclusion.
 
 \newpage
